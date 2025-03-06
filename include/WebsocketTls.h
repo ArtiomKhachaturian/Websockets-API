@@ -49,4 +49,4 @@ struct Tls
     std::string _dh; // Diffie-Hellman
 };
 
-} // namespace LiveKitCpp
+} // namespace Websocket
