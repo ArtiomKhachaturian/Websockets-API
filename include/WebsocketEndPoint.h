@@ -17,11 +17,14 @@
 #include "WebsocketOptions.h"
 #include <string>
 
+// prototype defined in 'Bricks' library,
+// see https://github.com/ArtiomKhachaturian/Bricks
+class Blob;
+
 namespace Websocket
 {
 
 class Listener;
-class Blob;
 enum class State;
 
 class EndPoint

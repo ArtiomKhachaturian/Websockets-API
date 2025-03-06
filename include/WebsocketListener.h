@@ -15,10 +15,14 @@
 #include <string_view>
 #include <memory>
 
+
+// prototype defined in 'Bricks' library,
+// see https://github.com/ArtiomKhachaturian/Bricks
+class Blob;
+
 namespace Websocket
 {
 
-class Blob;
 class Error;
 enum class State;
 
