@@ -13,6 +13,7 @@
 // limitations under the License.
 #pragma once // WebsocketError.h
 #include "WebsocketFailure.h"
+#include <sstream>
 #include <string>
 #include <system_error>
 
@@ -27,3 +28,29 @@ struct Error
 };
 
 } // Websocket
+
+
+inline std::ostream& operator << (std::ostream& os,
+                                  const Websocket::Error& error) {
+    os << toString(error._failure) << " error";
+    const auto message = error._code.message();
+    if (!message.empty()) {
+        os << " - '" << message << "'";
+    }
+    os << ", error code #" << error._code.value();
+    os << ", category '" << error._code.category().name() << "'";
+    if (!error._details.empty() && message != error._details) {
+        os << ", details - '" << error._details << "'";
+    }
+    return os;
+}
+
+namespace Websocket {
+
+inline std::string toString(const Error& error) {
+    std::ostringstream stream;
+    stream << error;
+    return stream.str();
+}
+
+}

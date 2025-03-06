@@ -27,4 +27,26 @@ enum class Failure
     TlsOptions
 };
 
+inline const char* toString(Failure failure) {
+    switch (failure) {
+        case Failure::General:
+            return "general";
+        case Failure::NoConnection:
+            return "no connection";
+        case Failure::CustomHeader:
+            return "custom header";
+        case Failure::WriteText:
+            return "write text";
+        case Failure::WriteBinary:
+            return "write binary";
+        case Failure::SocketOption:
+            return "socket option";
+        case Failure::TlsOptions:
+            return "TLS options";
+        default:
+            break;
+    }
+    return "unknown";
+}
+
 } // namespace Websocket
