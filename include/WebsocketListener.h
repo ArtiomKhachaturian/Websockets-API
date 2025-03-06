@@ -18,7 +18,9 @@
 
 // prototype defined in 'Bricks' library,
 // see https://github.com/ArtiomKhachaturian/Bricks
+namespace Bricks {
 class Blob;
+}
 
 namespace Websocket
 {
@@ -40,7 +42,7 @@ public:
                                const std::string_view& /*message*/) {}
     virtual void onBinaryMessage(uint64_t /*socketId*/,
                                  uint64_t /*connectionId*/,
-                                 const std::shared_ptr<Blob>& /*message*/) {}
+                                 const std::shared_ptr<Bricks::Blob>& /*message*/) {}
 protected:
     virtual ~Listener() = default;
 };
