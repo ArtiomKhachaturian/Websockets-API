@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 #pragma once // WebsocketEndPoint.h
-#include "State.h"
+#include "WebsocketState.h"
 #include "WebsocketCloseCode.h"
 #include "WebsocketOptions.h"
 #include <string>
