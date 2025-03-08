@@ -24,7 +24,8 @@ enum class Failure
     WriteText,
     WriteBinary,
     SocketOption,
-    TlsOptions
+    TlsOptions,
+    Ping
 };
 
 inline const char* toString(Failure failure) {
@@ -43,6 +44,8 @@ inline const char* toString(Failure failure) {
             return "socket option";
         case Failure::TlsOptions:
             return "TLS options";
+        case Failure::Ping:
+            return "ping";
         default:
             break;
     }
