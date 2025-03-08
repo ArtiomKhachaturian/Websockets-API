@@ -15,6 +15,7 @@
 #include "WebsocketState.h"
 #include "WebsocketCloseCode.h"
 #include "WebsocketOptions.h"
+#include <memory>
 #include <string>
 
 // prototype defined in 'Bricks' library,
@@ -33,9 +34,8 @@ class EndPoint
 {
 public:
     virtual ~EndPoint() = default;
-    virtual void addListener(Listener* listener) = 0;
-    virtual void removeListener(Listener* listener) = 0;
-    // [connectionId] will passed to all methods of Listener
+    virtual void setListener(const std::shared_ptr<Listener>& listener) = 0;
+    // [connectionId] will passed to all methods of the listener
     virtual bool open(Options options, uint64_t connectionId = 0U) = 0;
     virtual void close() = 0;
     virtual std::string host() const = 0;
@@ -44,6 +44,7 @@ public:
     virtual bool sendText(std::string_view text) = 0;
     virtual bool ping(const Bricks::Blob& payload) = 0;
     virtual bool ping() = 0;
+    void resetListener() { setListener({}); }
     uint64_t id() const noexcept { return reinterpret_cast<uint64_t>(this); }
 };
 
