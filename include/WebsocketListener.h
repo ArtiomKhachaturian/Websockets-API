@@ -43,6 +43,9 @@ public:
     virtual void onBinaryMessage(uint64_t /*socketId*/,
                                  uint64_t /*connectionId*/,
                                  const std::shared_ptr<Bricks::Blob>& /*message*/) {}
+    virtual void onPong(uint64_t /*socketId*/,
+                        uint64_t /*connectionId*/,
+                        const std::shared_ptr<Bricks::Blob>& /*payload*/) {}
 protected:
     virtual ~Listener() = default;
 };

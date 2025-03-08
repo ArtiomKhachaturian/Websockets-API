@@ -42,6 +42,7 @@ public:
     virtual State state() const = 0;
     virtual bool sendBinary(const std::shared_ptr<Bricks::Blob>& binary) = 0;
     virtual bool sendText(std::string_view text) = 0;
+    virtual bool ping(const std::shared_ptr<Bricks::Blob>& payload = {}) = 0;
     uint64_t id() const noexcept { return reinterpret_cast<uint64_t>(this); }
 };
 
