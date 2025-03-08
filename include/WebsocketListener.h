@@ -13,8 +13,6 @@
 // limitations under the License.
 #pragma once // WebsocketListener.h
 #include <string_view>
-#include <memory>
-
 
 // prototype defined in 'Bricks' library,
 // see https://github.com/ArtiomKhachaturian/Bricks
@@ -42,10 +40,10 @@ public:
                                const std::string_view& /*message*/) {}
     virtual void onBinaryMessage(uint64_t /*socketId*/,
                                  uint64_t /*connectionId*/,
-                                 const std::shared_ptr<Bricks::Blob>& /*message*/) {}
+                                 const Bricks::Blob& /*message*/) {}
     virtual void onPong(uint64_t /*socketId*/,
                         uint64_t /*connectionId*/,
-                        const std::shared_ptr<Bricks::Blob>& /*payload*/) {}
+                        const Bricks::Blob& /*payload*/) {}
 protected:
     virtual ~Listener() = default;
 };

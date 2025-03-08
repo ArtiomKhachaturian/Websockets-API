@@ -40,9 +40,10 @@ public:
     virtual void close() = 0;
     virtual std::string host() const = 0;
     virtual State state() const = 0;
-    virtual bool sendBinary(const std::shared_ptr<Bricks::Blob>& binary) = 0;
+    virtual bool sendBinary(const Bricks::Blob& binary) = 0;
     virtual bool sendText(std::string_view text) = 0;
-    virtual bool ping(const std::shared_ptr<Bricks::Blob>& payload = {}) = 0;
+    virtual bool ping(const Bricks::Blob& payload) = 0;
+    virtual bool ping() = 0;
     uint64_t id() const noexcept { return reinterpret_cast<uint64_t>(this); }
 };
 
