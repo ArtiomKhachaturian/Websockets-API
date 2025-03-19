@@ -16,9 +16,35 @@
 namespace Websocket
 {
 
-enum class TlsPeerVerification {
+/**
+ * @brief Enum class to specify the level of TLS peer verification.
+ *
+ * The `TlsPeerVerification` enum defines the behavior for verifying the identity
+ * of the TLS peer during a secure connection handshake.
+ */
+enum class TlsPeerVerification
+{
+    /**
+     * @brief No peer verification.
+     *
+     * Indicates that the peer's identity will not be verified during the TLS handshake.
+     * This option is insecure and should only be used for testing or debugging purposes.
+     */
     No,
+
+    /**
+     * @brief Enable peer verification.
+     *
+     * The peer's certificate will be verified during the TLS handshake to ensure authenticity.
+     */
     Yes,
+
+    /**
+     * @brief Enable peer verification and reject if no certificate is provided.
+     *
+     * The peer's certificate will be verified, and the connection will be rejected
+     * if the peer fails to provide a valid certificate.
+     */
     YesAndRejectIfNoCert
 };
 

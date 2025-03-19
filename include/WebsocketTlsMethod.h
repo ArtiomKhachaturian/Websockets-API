@@ -16,54 +16,85 @@
 namespace Websocket
 {
 
-enum class TlsMethod {
-    /// Generic SSL version 2.
+/**
+ * @brief Enum class representing various SSL/TLS protocol methods.
+ *
+ * The `TlsMethod` enum is used to specify the SSL/TLS version or method
+ * for secure communication. It supports a variety of SSL and TLS versions,
+ * including specific configurations for client and server roles.
+ */
+enum class TlsMethod
+{
+    /// @brief Generic SSL version 2.
     sslv2,
-    /// SSL version 2 client.
+
+    /// @brief SSL version 2 client configuration.
     sslv2_client,
-    /// SSL version 2 server.
+
+    /// @brief SSL version 2 server configuration.
     sslv2_server,
-    /// Generic SSL version 3.
+
+    /// @brief Generic SSL version 3.
     sslv3,
-    /// SSL version 3 client.
+
+    /// @brief SSL version 3 client configuration.
     sslv3_client,
-    /// SSL version 3 server.
+
+    /// @brief SSL version 3 server configuration.
     sslv3_server,
-    /// Generic TLS version 1.
+
+    /// @brief Generic TLS version 1.0.
     tlsv1,
-    /// TLS version 1 client.
+
+    /// @brief TLS version 1.0 client configuration.
     tlsv1_client,
-    /// TLS version 1 server.
+
+    /// @brief TLS version 1.0 server configuration.
     tlsv1_server,
-    /// Generic SSL/TLS.
+
+    /// @brief Generic SSL/TLS with automatic protocol negotiation.
     sslv23,
-    /// SSL/TLS client.
+
+    /// @brief SSL/TLS client with automatic protocol negotiation.
     sslv23_client,
-    /// SSL/TLS server.
+
+    /// @brief SSL/TLS server with automatic protocol negotiation.
     sslv23_server,
-    /// Generic TLS version 1.1.
+
+    /// @brief Generic TLS version 1.1.
     tlsv11,
-    /// TLS version 1.1 client.
+
+    /// @brief TLS version 1.1 client configuration.
     tlsv11_client,
-    /// TLS version 1.1 server.
+
+    /// @brief TLS version 1.1 server configuration.
     tlsv11_server,
-    /// Generic TLS version 1.2.
+
+    /// @brief Generic TLS version 1.2.
     tlsv12,
-    /// TLS version 1.2 client.
+
+    /// @brief TLS version 1.2 client configuration.
     tlsv12_client,
-    /// TLS version 1.2 server.
+
+    /// @brief TLS version 1.2 server configuration.
     tlsv12_server,
-    /// Generic TLS version 1.3.
+
+    /// @brief Generic TLS version 1.3.
     tlsv13,
-    /// TLS version 1.3 client.
+
+    /// @brief TLS version 1.3 client configuration.
     tlsv13_client,
-    /// TLS version 1.3 server.
+
+    /// @brief TLS version 1.3 server configuration.
     tlsv13_server,
-    /// Generic TLS.
+
+    /// @brief Generic TLS configuration.
     tls,
-    /// TLS client.
+
+    /// @brief TLS client configuration.
     tls_client,
-    /// TLS server.
+
+    /// @brief TLS server configuration.
     tls_server
 };
 

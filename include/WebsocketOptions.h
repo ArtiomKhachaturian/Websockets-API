@@ -19,38 +19,127 @@
 namespace Websocket
 {
 
+/**
+ * @brief Represents configurable options for a connection.
+ *
+ * The `Options` struct provides a set of parameters for configuring socket options,
+ * headers, and SSL/TLS settings. These settings offer fine-grained control over
+ * connection behavior and properties.
+ */
 struct Options
 {
+    /**
+     * @brief Type alias for SO_LINGER options.
+     *
+     * Represents the linger setting as a pair, where the first element indicates
+     * if linger is enabled, and the second element specifies the duration (in seconds).
+     */
     using Linger = std::pair<bool, uint16_t>;
+
 public:
-    // URL/URI
+    /**
+     * @brief The host URL or URI for the connection.
+     *
+     * Specifies the destination address for the connection.
+     */
     std::string _host;
-    // agent
+
+    /**
+     * @brief The user agent string.
+     *
+     * Specifies the agent identifier, often used in HTTP headers.
+     */
     std::string _userAgent;
-    // headers
+
+    /**
+     * @brief Additional headers for the connection.
+     *
+     * Allows the inclusion of extra HTTP headers as key-value pairs.
+     */
     std::unordered_map<std::string, std::string> _extraHeaders;
-    // options
-    // SOL_SOCKET/SO_BROADCAST
+
+    // Socket options
+
+    /**
+     * @brief Enables or disables broadcasting (SO_BROADCAST).
+     *
+     * If set to true, the connection supports broadcasting.
+     */
     std::optional<bool> _broadcast;
-    // SOL_SOCKET/SO_DONTROUTE
+
+    /**
+     * @brief Enables or disables routing (SO_DONTROUTE).
+     *
+     * If set to true, the connection will bypass the routing tables.
+     */
     std::optional<bool> _doNotRoute;
-    // SOL_SOCKET/SO_KEEPALIVE
+
+    /**
+     * @brief Enables or disables keep-alive (SO_KEEPALIVE).
+     *
+     * If set to true, the connection will use keep-alive packets to maintain the connection.
+     */
     std::optional<bool> _keepAlive;
-    // SOL_SOCKET/SO_LINGER https://www.ibm.com/docs/en/cics-tg-multi/9.2?topic=settings-so-linger-setting
+
+    /**
+     * @brief Configures the linger setting (SO_LINGER).
+     *
+     * If enabled, the linger setting determines how the connection handles pending data
+     * when the socket is closed.
+     * @see https://www.ibm.com/docs/en/cics-tg-multi/9.2?topic=settings-so-linger-setting
+     */
     std::optional<Linger> _linger;
-    // SOL_SOCKET/SO_RCVBUF
+
+    /**
+     * @brief Configures the receive buffer size (SO_RCVBUF).
+     *
+     * Specifies the size (in bytes) of the buffer used for receiving data.
+     */
     std::optional<uint32_t> _receiveBufferSize;
-    // SOL_SOCKET/SO_RCVLOWAT
+
+    /**
+     * @brief Configures the receive low watermark (SO_RCVLOWAT).
+     *
+     * Specifies the minimum amount of data (in bytes) required to trigger a read operation.
+     */
     std::optional<uint32_t> _receiveLowWatermark;
-    // SOL_SOCKET/SO_REUSEADDR
+
+    /**
+     * @brief Enables or disables address reuse (SO_REUSEADDR).
+     *
+     * If set to true, the socket allows binding to an address that is in use.
+     */
     std::optional<bool> _reuseAddress;
-    // SOL_SOCKET/SO_SNDBUF
+
+    /**
+     * @brief Configures the send buffer size (SO_SNDBUF).
+     *
+     * Specifies the size (in bytes) of the buffer used for sending data.
+     */
     std::optional<uint32_t> _sendBufferSize;
-    // SOL_SOCKET/SO_SNDLOWAT
+
+    /**
+     * @brief Configures the send low watermark (SO_SNDLOWAT).
+     *
+     * Specifies the minimum amount of data (in bytes) required to trigger a send operation.
+     */
     std::optional<uint32_t> _sendLowWatermark;
-    // IPPROTO_TCP/TCP_NODELAY
+
+    /**
+     * @brief Enables or disables the Nagle algorithm (TCP_NODELAY).
+     *
+     * If set to true, disables the Nagle algorithm, reducing latency for small packets.
+     */
     std::optional<bool> _tcpNoDelay;
-    // SSL/TLS
+
+    // SSL/TLS settings
+
+    /**
+     * @brief SSL/TLS configuration options.
+     *
+     * Provides settings for secure communication, including certificate paths
+     * and protocol versions.
+     */
     Tls _tls;
 };
 

@@ -26,25 +26,77 @@ namespace Websocket
 class Error;
 enum class State;
 
+/**
+ * @brief An interface class for listening to websocket events.
+ *
+ * The `Listener` class defines callback methods for handling various WebSocket events,
+ * such as state changes, errors, and incoming messages. Classes that wish to handle these
+ * events should inherit from `Listener` and override the necessary methods.
+ */
 class Listener
 {
 public:
+    /**
+     * @brief Called when the websocket state changes.
+     *
+     * @param socketId The unique identifier of the websocket socket.
+     * @param connectionId The unique identifier of the websocket connection.
+     * @param state The new state of the websocket connection.
+     */
     virtual void onStateChanged(uint64_t /*socketId*/,
                                 uint64_t /*connectionId*/,
                                 State /*state*/) {}
+
+    /**
+     * @brief Called when an error occurs on the websocket connection.
+     *
+     * @param socketId The unique identifier of the websocket socket.
+     * @param connectionId The unique identifier of the websocket connection.
+     * @param error Details of the error that occurred.
+     */
     virtual void onError(uint64_t /*socketId*/,
                          uint64_t /*connectionId*/,
                          const Error& /*error*/) {}
+
+    /**
+     * @brief Called when a text message is received on the websocket connection.
+     *
+     * @param socketId The unique identifier of the websocket socket.
+     * @param connectionId The unique identifier of the websocket connection.
+     * @param message The received text message.
+     */
     virtual void onTextMessage(uint64_t /*socketId*/,
                                uint64_t /*connectionId*/,
                                const std::string_view& /*message*/) {}
+
+    /**
+     * @brief Called when a binary message is received on the websocket connection.
+     *
+     * @param socketId The unique identifier of the websocket socket.
+     * @param connectionId The unique identifier of the websocket connection.
+     * @param message The received binary message as a blob.
+     */
     virtual void onBinaryMessage(uint64_t /*socketId*/,
                                  uint64_t /*connectionId*/,
                                  const Bricks::Blob& /*message*/) {}
+
+    /**
+     * @brief Called when a pong response is received for a ping.
+     *
+     * @param socketId The unique identifier of the websocket socket.
+     * @param connectionId The unique identifier of the websocket connection.
+     * @param payload The payload data from the pong response.
+     */
     virtual void onPong(uint64_t /*socketId*/,
                         uint64_t /*connectionId*/,
                         const Bricks::Blob& /*payload*/) {}
+
 protected:
+    /**
+     * @brief Virtual destructor.
+     *
+     * Ensures proper cleanup of derived classes when deleted via a `Listener` pointer.
+     */
     virtual ~Listener() = default;
 };
 

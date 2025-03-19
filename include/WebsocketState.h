@@ -16,12 +16,42 @@
 namespace Websocket
 {
 
+/**
+ * @brief Enum class representing the states of a websocket connection.
+ *
+ * The `State` enum is used to track the current status of a WebSocket connection,
+ * from the initial connection process to disconnection.
+ */
 enum class State
 {
+    /**
+     * @brief The websocket is in the process of connecting.
+     *
+     * This state indicates that a connection is being established.
+     */
     Connecting,
+
+    /**
+     * @brief The websocket is connected and ready for communication.
+     *
+     * This state indicates that the connection has been successfully established.
+     */
     Connected,
+
+    /**
+     * @brief The websocket is in the process of disconnecting.
+     *
+     * This state indicates that the connection is being closed.
+     */
     Disconnecting,
+
+    /**
+     * @brief The websocket has been disconnected.
+     *
+     * This state indicates that the connection has been fully closed.
+     */
     Disconnected,
 };
+
 
 } // namespace Websocket

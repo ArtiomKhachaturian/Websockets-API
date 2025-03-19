@@ -19,10 +19,26 @@ namespace Websocket
 
 class EndPoint;
 
+/**
+ * @brief An abstract factory class for creating websocket endpoints.
+ *
+ * The `Factory` class provides an interface for creating instances of `EndPoint`.
+ * Derived classes should implement the `create` method to define how `EndPoint`
+ * objects are instantiated.
+ */
 class Factory
 {
 public:
+    /**
+     * @brief Virtual destructor for proper cleanup of derived classes.
+     */
     virtual ~Factory() = default;
+
+    /**
+     * @brief Creates a new instance of a websocket endpoint.
+     *
+     * @return A `std::unique_ptr` to the newly created `EndPoint` instance.
+     */
     virtual std::unique_ptr<EndPoint> create() const = 0;
 };
 
